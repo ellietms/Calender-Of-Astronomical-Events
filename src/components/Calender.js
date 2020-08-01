@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
-import ObjectInfo from "./ObjectInfo";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../App.css";
 
-const Calender = () => {
-  const [data, setData] = useState([]);
-  const [selectObjectData, setSelectObjectData] = useState(null);
-  useEffect(() => {
-    fetch("https://ssd-api.jpl.nasa.gov/cad.api")
-      .then((response) => response.json())
-      .then((data) => setData(data.data));
-  }, []);
+const Calender = ({data,showInfoPage}) => {
   let rowNum = 0;
-  let mainContent;
-  let Rate;
-
-  if (selectObjectData === null) {
-    mainContent = (
+  return(
       <div>
         <div className="container calender">
           <div className="mt-3 calender-title">
@@ -57,7 +45,7 @@ const Calender = () => {
                         <a
                           href="#"
                           className="nameOfObject"
-                          onClick={() => setSelectObjectData(object)}
+                          onClick={() => showInfoPage(object)}
                         >
                           {object.map((data) => data.split(","))[0]}
                         </a>
@@ -87,17 +75,6 @@ const Calender = () => {
           </div>
         </div>
       </div>
-    );
-  } else {
-    mainContent = (
-      <div>
-        <ObjectInfo
-          data={selectObjectData}
-          backToMainPage={() => setSelectObjectData(null)}
-        />
-      </div>
-    );
-  }
-  return <div>{mainContent}</div>;
+  )
 };
 export default Calender;
