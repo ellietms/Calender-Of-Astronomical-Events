@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../App.css";
 
 const Calender = ({data,showInfoPage}) => {
-  let rowNum = 0;
   return(
       <div>
         <div className="container calender">
@@ -36,36 +35,31 @@ const Calender = ({data,showInfoPage}) => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((object) => {
-                  console.log(object.map((data) => data.split(",")))
+                {data.map((object,rowNum) => {
                   return (
                     <tr>
-                      <td>{(rowNum = rowNum + 1)}</td>
+                      <td>{rowNum + 1}</td>
                       <td>
                         <a
                           href="#"
                           className="nameOfObject"
                           onClick={() => showInfoPage(object)}
                         >
-                          {object.map((data) => data.split(","))[0]}
+                          {object[0]}
                         </a>
                       </td>
                       <td>
                         {
-                          object
-                            .map((data) => data.split(","))[3][0]
-                            .split(" ")[0]
+                          object[3].split(" ")[0]
                         }
                       </td>
                       <td>
                         {
-                          object
-                            .map((data) => data.split(","))[3][0]
-                            .split(" ")[1]
+                          object[3].split(" ")[1]
                         }
                       </td>
                       <td className="rate">
-                       {Math.ceil(Math.round((((Math.ceil(object.map((data) => data.split(","))[4] * (1.496e+8).toFixed(2))/5e+6).toFixed(2))/1.5)*100)*0.1)}<i class="fas fa-star"></i>
+                       {Math.ceil(Math.round((((Math.ceil(object[4] * (1.496e+8).toFixed(2))/5e+6).toFixed(2))/1.5)*100)*0.1)}<i class="fas fa-star"></i>
                       </td>
                     </tr>
                   );
