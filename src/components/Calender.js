@@ -3,6 +3,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../App.css";
 
 const Calender = ({data,showInfoPage}) => {
+  let convertAUtoKM = (1.496e+8).toFixed(2);
+  let visibleDistanceFromEarth = 5e+6;
+  let scale = 1.5
   return(
       <div>
         <div className="container calender">
@@ -36,6 +39,7 @@ const Calender = ({data,showInfoPage}) => {
               </thead>
               <tbody>
                 {data.map((object,rowNum) => {
+                  console.log((Math.ceil(object[4] * convertAUtoKM )/visibleDistanceFromEarth).toFixed(2));
                   return (
                     <tr>
                       <td>{rowNum + 1}</td>
@@ -59,7 +63,7 @@ const Calender = ({data,showInfoPage}) => {
                         }
                       </td>
                       <td className="rate">
-                       {Math.ceil(Math.round((((Math.ceil(object[4] * (1.496e+8).toFixed(2))/5e+6).toFixed(2))/1.5)*100)*0.1)}<i class="fas fa-star"></i>
+                       {Math.ceil(Math.round((((Math.ceil(object[4] * convertAUtoKM )/visibleDistanceFromEarth).toFixed(2))/scale)*100)*0.1)}<i class="fas fa-star"></i>
                       </td>
                     </tr>
                   );
