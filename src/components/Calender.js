@@ -13,6 +13,7 @@ const Calender = ({ data, showInfoPage }) => {
           <img
             src="https://i.gifer.com/7b5j.gif"
             className="image-title-calender"
+            alt="Calender Of Astronomical Events"
           />
           <p className="mr-auto calender-title-text">
             Calender Of <br /> Astronomical Events
@@ -39,23 +40,16 @@ const Calender = ({ data, showInfoPage }) => {
             </thead>
             <tbody>
               {data.map((object, rowNum) => {
-                console.log(
-                  (
-                    Math.ceil(object[4] * convertAUtoKM) /
-                    visibleDistanceFromEarth
-                  ).toFixed(2)
-                );
                 return (
                   <tr>
                     <td>{rowNum + 1}</td>
                     <td>
-                      <a
-                        href="#"
-                        className="nameOfObject"
+                      <p
                         onClick={() => showInfoPage(object)}
+                        className = "nameOfObject"
                       >
                         {object[0]}
-                      </a>
+                      </p>
                     </td>
                     <td>{object[3].split(" ")[0]}</td>
                     <td>{object[3].split(" ")[1]}</td>

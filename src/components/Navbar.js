@@ -17,6 +17,7 @@ const Navbar = () => {
           height="80"
           alt="stars"
         />
+        
       </nav>
     </div>
   );

@@ -61,12 +61,13 @@ font-size: 40px;
 
 .nameOfObject{
   color:rgb(177, 177, 145);
+  cursor: pointer;
 }
 
-a:hover{
+.nameOfObject:hover{
   color: brown;
-  text-decoration: none;
 }
+
 
 .object-table-info{
   background-image: url("https://thumbs.gfycat.com/SmugUnconsciousCornsnake-size_restricted.gif");
@@ -100,3 +101,4 @@ a:hover{
 .btn:hover{
   color: aliceblue;
 }
+
